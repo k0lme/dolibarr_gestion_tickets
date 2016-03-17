@@ -185,22 +185,22 @@ class modbourgeaa extends DolibarrModules
 		$this->menu = array();			// List of menus to add
 		$r=0;
 
-		// Add here entries to declare new menus
-		//
-		// Example to declare a new Top Menu entry and its Left menu entry:
-		// $this->menu[$r]=array(	'fk_menu'=>0,			                // Put 0 if this is a top menu
-		//							'type'=>'top',			                // This is a Top menu entry
-		//							'titre'=>'bourgeaa top menu',
-		//							'mainmenu'=>'bourgeaa',
-		//							'leftmenu'=>'bourgeaa',
-		//							'url'=>'/bourgeaa/pagetop.php',
-		//							'langs'=>'mylangfile@bourgeaa',	        // Lang file to use (without .lang) by module. File must be in langs/code_CODE/ directory.
-		//							'position'=>100,
-		//							'enabled'=>'$conf->bourgeaa->enabled',	// Define condition to show or hide menu entry. Use '$conf->bourgeaa->enabled' if entry must be visible if module is enabled.
-		//							'perms'=>'1',			                // Use 'perms'=>'$user->rights->bourgeaa->level1->level2' if you want your menu with a permission rules
-		//							'target'=>'',
-		//							'user'=>2);				                // 0=Menu for internal users, 1=external users, 2=both
-		// $r++;
+		// Top menu
+		$this->menu[$r] = array(
+			'fk_menu'  => 0,
+			'type'     => 'top',
+			'titre'    => 'Tickets',
+			'mainmenu' => 'bourgeaa',
+			'leftmenu' => 'bourgeaa',
+			'url'      => '/bourgeaa/pagetop.php',
+			'langs'    => 'bourgeaa@bourgeaa',
+			'position' => 100,
+			'enabled'  => '$conf->bourgeaa->enabled',
+			'perms'    => '1',
+			'target'   => '',
+			'user'     => 2
+		);
+		$r++;
 		//
 		// Example to declare a Left Menu entry into an existing Top menu entry:
 		// $this->menu[$r]=array(	'fk_menu'=>'fk_mainmenu=xxx',		    // Use 'fk_mainmenu=xxx' or 'fk_mainmenu=xxx,fk_leftmenu=yyy' where xxx is mainmenucode and yyy is a leftmenucode
@@ -247,7 +247,7 @@ class modbourgeaa extends DolibarrModules
 	function init($options='')
 	{
 		$sql = array();
-		
+
 		define('INC_FROM_DOLIBARR',true);
 
 		dol_include_once('/bourgeaa/config.php');
